@@ -17,7 +17,8 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(name = "id_usuario")
+    private Integer idUsuario;
 
     @Column(name = "código_usuario", nullable = false, unique = true)
     private String codigoUsuario;
