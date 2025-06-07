@@ -36,7 +36,7 @@ public class Usuario {
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "rol_id", referencedColumnName = "id_rol")
+    @JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
     private Rol rol;
 
 }
