@@ -25,6 +25,6 @@ public class UsuarioRequest {
     @NotNull(message = "La contraseña no puede ser nula")
     private String contrasena;
 
-    @NotBlank(message = "El rol no existe")
+    @NotNull(message = "El rol no puede ser nulo")
     private String rol;
 }
