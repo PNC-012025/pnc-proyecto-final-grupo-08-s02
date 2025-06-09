@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface UsuarioXMateriaService {
     List<UsuarioXMateriaResponse> findAll();
-    UsuarioXMateriaResponse obtenerUsuarioXMateriaPorId(int idUsuarioXMateria);
+    UsuarioXMateriaResponse findById(int idUsuarioXMateria);
     UsuarioXMateriaResponse save(UsuarioXMateriaRequest usuarioXMateria);
     void delete(int idUsuarioXMateria);
-    List<UsuarioResponse> obtenerUsuarioPorMateria(String codigoUsuario);
-    List<MateriaResponse> obtenerMateriaPorUsuario(String nombreMateria);
+    List<UsuarioResponse> getUsuarioRequest(String codigoUsuario);
+    List<MateriaResponse> getMateriaRequest(String nombreMateria);
 }

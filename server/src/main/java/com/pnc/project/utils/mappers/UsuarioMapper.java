@@ -11,6 +11,7 @@ public class UsuarioMapper {
     public static Usuario toEntity(UsuarioResponse usuarioDTO) {
         return Usuario.builder()
                 .idUsuario(usuarioDTO.getIdUsuario())
+                .codigoUsuario(usuarioDTO.getCodigoUsuario())
                 .nombre(usuarioDTO.getNombre())
                 .apellido(usuarioDTO.getApellido())
                 .email(usuarioDTO.getCorreo())

@@ -3,6 +3,7 @@ package com.pnc.project.service;
 import com.pnc.project.dto.request.formulario.FormularioRequest;
 import com.pnc.project.dto.response.formulario.FormularioResponse;
 import com.pnc.project.dto.response.usuario.UsuarioResponse;
+import com.pnc.project.entities.Usuario;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,5 +15,5 @@ public interface FormularioService {
     FormularioResponse findByEstado(String estado);
     FormularioResponse save(FormularioRequest formulario);
     void delete(int id);
-    List<UsuarioResponse> getUsuarioRequests(String codigoUsuario);
+    List<FormularioResponse> getUsuarioRequests(Usuario usuario);
 }

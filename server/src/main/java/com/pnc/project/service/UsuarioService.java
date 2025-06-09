@@ -13,6 +13,4 @@ public interface UsuarioService {
     UsuarioResponse findByCodigo(String codigo);
     UsuarioResponse save(UsuarioRequest usuario);
     void delete(int id);
-    List<RolResponse> getRolRequests(int idUsuario);
-
 }
