@@ -11,17 +11,16 @@ import java.util.List;
 
 public interface ValidacionService {
 
-    List<ValidacionResponse> findAll();
-    ValidacionResponse findById(int id);
-    ValidacionResponse findByDate(LocalDate fechaValidacion);
-    ValidacionResponse findByEstado(Boolean estadoValidacion);
     //Crear Validación
     ValidacionResponse save(ValidacionRequest validacion);
     //Obtener Validación por Formulario
     ValidacionResponse findByFormulario(Formulario formulario);
     //Actualizar Validación
     ValidacionResponse update(ValidacionRequest validacion);
-    void delete(int id);
-    List<UsuarioResponse> getUsuarioRequests(String codigoUsuario);
-    List<FormularioResponse> getFormularioRequests(int idFormulario);
+
+
+    //------HACEN FALTA------
+    //listarFormulariosPendientes() (para encargado)
+    //listarValidacionesPorEncargado(id_encargado)
+    //rechazarFormulario(id_formulario, observacion)
 }

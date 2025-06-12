@@ -27,23 +27,13 @@ public class FormularioServiceImpl implements FormularioService {
     }
 
     @Override
-    public List<FormularioResponse> findAll() {return FormularioMapper.toDTOList(formularioRepository.findAll()); }
+    public List<FormularioResponse> findAllUsers(Usuario usuario) {
+        return FormularioMapper.toDTOList(formularioRepository.findByUsuario(usuario));
+    }
 
     @Override
     public FormularioResponse findById(int id) {
         return FormularioMapper.toDTO(formularioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Formulario not found")));
-    }
-
-    @Override
-    public FormularioResponse findByDate(LocalDate fechaCreacion) {
-        return FormularioMapper.toDTO(formularioRepository.findByFechaCreacion(fechaCreacion)
-                .orElseThrow(() -> new RuntimeException("Formulario not found")));
-    }
-
-    @Override
-    public FormularioResponse findByEstado(String estado) {
-        return FormularioMapper.toDTO(formularioRepository.findByEstado(estado)
                 .orElseThrow(() -> new RuntimeException("Formulario not found")));
     }
 
@@ -54,10 +44,12 @@ public class FormularioServiceImpl implements FormularioService {
     }
 
     @Override
-    public void delete(int id) {formularioRepository.deleteById(id);}
+    public FormularioResponse update(FormularioRequest formulario) {
+        UsuarioResponse usuario = usuarioService.findByCodigo(formulario.getCodigoUsuario());
+        return FormularioMapper.toDTO(formularioRepository.save(FormularioMapper.toEntityUpdate(formulario, UsuarioMapper.toEntity(usuario))));
+    }
 
     @Override
-    public List<FormularioResponse> getUsuarioRequests(Usuario usuario) {
-        return FormularioMapper.toDTOList(formularioRepository.findByUsuario(usuario));
-    }
+    public void delete(int id) {formularioRepository.deleteById(id);}
+
 }

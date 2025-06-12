@@ -9,6 +9,9 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class ValidacionRequest {
+    @NotNull(message = "ID de validación no puede ser nulo")
+    private Integer idValidacion;
+
     @NotNull(message = "Fecha de validación no puede ser nula")
     private LocalDate feachaValidacion;
 

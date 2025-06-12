@@ -1,6 +1,5 @@
 package com.pnc.project.service.impl;
 
-import com.pnc.project.dto.request.rol.RolRequest;
 import com.pnc.project.dto.response.rol.RolResponse;
 import com.pnc.project.repository.RolRepository;
 import com.pnc.project.service.RolService;
@@ -21,21 +20,9 @@ public class RolServiceImpl implements RolService {
     public List<RolResponse> findAll(){return RolMapper.toDTOList(rolRepository.findAll());}
 
     @Override
-    public RolResponse findById(int id) {
-        return RolMapper.toDTO(rolRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Rol not found")));
-    }
-
-    @Override
     public RolResponse findByName(String name) {
-        return RolMapper.toDTO(rolRepository.findByNombreRol(name.toUpperCase())
+        return RolMapper.toDTO(rolRepository.findByNombreRol(name)
                 .orElseThrow(() -> new RuntimeException("Rol not found")));
-    }
-
-    @Override
-    public RolResponse save(RolRequest rol) {
-        rol.setNombreRol(rol.getNombreRol().toUpperCase());
-        return RolMapper.toDTO(rolRepository.save(RolMapper.toEntityCreate(rol)));
     }
 
 }

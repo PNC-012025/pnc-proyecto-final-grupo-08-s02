@@ -17,4 +17,7 @@ public interface ActividadService {
 
     //Listar por tipo
     List<ActividadResponse> findByTipo(String tipo);
+
+    //buscar por id
+    ActividadResponse findById(int id);
 }

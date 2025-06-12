@@ -18,4 +18,7 @@ public interface UsuarioXMateriaService {
     List<UsuarioXMateriaResponse> listUserMaterias(Materia materia);
     //Listar Materias por Usuario
     List<UsuarioXMateriaResponse> listMateriaUser(Usuario usuario);
+
+
+    List<Usuario> findUsuariosByMateria(Integer idMateria);
 }

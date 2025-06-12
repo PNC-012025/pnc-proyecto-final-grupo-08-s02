@@ -22,6 +22,14 @@ public class ActividadMapper {
                 .build();
     }
 
+    public static Actividad toEntityUpdate(ActividadRequest actividadDTO) {
+        return Actividad.builder()
+                .idActividad(actividadDTO.getIdActividad())
+                .actividadNombre(actividadDTO.getNombreActividad())
+                .tipoActividad(actividadDTO.getTipoActividad())
+                .build();
+    }
+
     public static ActividadResponse toDTO(Actividad actividad) {
         return ActividadResponse.builder()
                 .idActividad(actividad.getIdActividad())

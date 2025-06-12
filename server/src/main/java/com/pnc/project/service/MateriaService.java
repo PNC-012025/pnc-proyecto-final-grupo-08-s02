@@ -11,7 +11,7 @@ public interface MateriaService {
 
     //Crear materia
     MateriaResponse save(MateriaRequest materia);
-    //Actualiza materia (hace falta)
+    //Actualiza materia
     MateriaResponse update(MateriaRequest materia);
     //Eliminar materia
     void delete(int id);

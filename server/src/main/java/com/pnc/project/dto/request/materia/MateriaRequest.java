@@ -9,6 +9,9 @@ import lombok.Data;
 @Builder
 public class MateriaRequest {
     @NotNull(message = "El ID de la materia no puede ser nulo")
-    @NotBlank(message = "El ID de la materia no puede estar vacío")
+    private Integer idMateria;
+
+    @NotNull(message = "El nombre de la materia no puede ser nulo")
+    @NotBlank(message = "El nombre de la materia no puede estar vacío")
     private String nombreMateria;
 }

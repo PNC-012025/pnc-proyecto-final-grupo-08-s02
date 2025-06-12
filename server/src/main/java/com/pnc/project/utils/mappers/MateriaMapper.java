@@ -20,6 +20,13 @@ public class MateriaMapper {
                 .build();
     }
 
+    public static Materia toEntityUpdate(MateriaRequest materiaDTO){
+        return Materia.builder()
+                .idMateria(materiaDTO.getIdMateria())
+                .nombreMateria(materiaDTO.getNombreMateria())
+                .build();
+    }
+
     public static MateriaResponse toDTO(Materia materia){
         return MateriaResponse.builder()
                 .idMateria(materia.getIdMateria())

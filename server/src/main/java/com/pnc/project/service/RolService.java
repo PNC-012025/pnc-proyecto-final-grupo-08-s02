@@ -9,5 +9,5 @@ public interface RolService {
     //Listar roles
     List<RolResponse> findAll();
     //Únicamente este metodo puesto que son roles fijos de un ENUM
-
+    RolResponse findByName(String name);
 }

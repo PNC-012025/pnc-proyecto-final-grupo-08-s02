@@ -8,6 +8,9 @@ import lombok.Data;
 @Data
 @Builder
 public class ActividadRequest {
+    @NotNull(message = "No puedes enviar un ID nulo")
+    private Integer idActividad;
+
     @NotNull(message = "No puedes enviar un nombre nulo")
     @NotBlank(message = "El nombre de la actividad no puede estar vacío")
     private String nombreActividad;

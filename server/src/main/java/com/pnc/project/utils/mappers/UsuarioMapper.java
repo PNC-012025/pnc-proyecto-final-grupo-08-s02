@@ -25,6 +25,19 @@ public class UsuarioMapper {
                 .nombre(usuarioDTO.getNombre())
                 .apellido(usuarioDTO.getApellido())
                 .email(usuarioDTO.getCorreo())
+                .password(usuarioDTO.getContrasena())
+                .rol(rol)
+                .build();
+    }
+
+    public static Usuario toEntityUpdate(UsuarioRequest usuarioDTO, Rol rol) {
+        return Usuario.builder()
+                .idUsuario(usuarioDTO.getIdUsuario())
+                .codigoUsuario(usuarioDTO.getCodigoUsuario())
+                .nombre(usuarioDTO.getNombre())
+                .apellido(usuarioDTO.getApellido())
+                .email(usuarioDTO.getCorreo())
+                .password(usuarioDTO.getContrasena())
                 .rol(rol)
                 .build();
     }

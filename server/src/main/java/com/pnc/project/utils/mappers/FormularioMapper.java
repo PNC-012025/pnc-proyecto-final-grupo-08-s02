@@ -25,6 +25,15 @@ public class FormularioMapper {
                 .build();
     }
 
+    public static Formulario toEntityUpdate(FormularioRequest formularioDTO, Usuario usuario) {
+        return Formulario.builder()
+                .idFormulario(formularioDTO.getIdFormulario())
+                .fechaCreacion(formularioDTO.getFechaCreacion())
+                .estado(formularioDTO.getEstado())
+                .usuario(usuario)
+                .build();
+    }
+
     public static FormularioResponse toDTO(Formulario formulario) {
         return FormularioResponse.builder()
                 .idFormulario(formulario.getIdFormulario())
