@@ -9,11 +9,27 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface FormularioService {
-    List<FormularioResponse> findAll();
+    //Listar formulario por usuarios
+    List<FormularioResponse> findAllUsers(Usuario usuario);
+    //Obtener formulario por id
     FormularioResponse findById(int id);
-    FormularioResponse findByDate(LocalDate fechaCreacion);
-    FormularioResponse findByEstado(String estado);
+
+    //Crear formulario
     FormularioResponse save(FormularioRequest formulario);
+    //Eliminar formulario
     void delete(int id);
-    List<FormularioResponse> getUsuarioRequests(Usuario usuario);
+    //Actualizar formulario
+    FormularioResponse update(FormularioRequest formulario);
+
+    //-------HACEN FALTA-------
+    //Obtener los formulario de la semana actual del usuario
+    //obtenerFormularioSemanaUsuario(id_usuario, semanaActual)
+
+    //Verificar si ya tiene formulario esta semana
+    //verificarSiYaTieneFormularioEstaSemana(id_usuario)
+
+    // Marcar como validado
+    //marcarComoValidado(id_formulario, id_encargado)
+
+
 }

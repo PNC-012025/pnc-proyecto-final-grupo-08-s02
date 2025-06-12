@@ -6,10 +6,8 @@ import com.pnc.project.dto.response.rol.RolResponse;
 import java.util.List;
 
 public interface RolService {
+    //Listar roles
     List<RolResponse> findAll();
-    RolResponse findById(int id);
-    RolResponse findByName(String nombre);
-    RolResponse save(RolRequest rol);
-    //No tendremos Update ni Delete de roles, ya que son fijos y no se modifican
+    //Únicamente este metodo puesto que son roles fijos de un ENUM
 
 }
