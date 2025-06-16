@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface Registro_HoraService {
     List<Registro_HoraResponse> findAll();
-    //Obtener por id
+    //Obtener por ID
     Registro_HoraResponse findById(int id);
     //Actualizar Registro
     Registro_HoraResponse update(Registro_HoraRequest registro_Hora);
@@ -30,4 +30,5 @@ public interface Registro_HoraService {
     //Listar por fecha de rangos
     List<Registro_HoraResponse> dateList(Usuario usuario, LocalDate inicio, LocalDate fin);
 
+    List<Registro_HoraResponse> dateListByUsuarioAndRange(int idUsuario, String fechaInicio, String fechaFin);
 }

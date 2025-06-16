@@ -37,4 +37,7 @@ public class Registro_HoraRequest {
 
     @NotNull(message = "El id del formulario no puede ser nulo")
     private Integer idFormulario;
+
+    private Integer idRegistro;
+
 }

@@ -1,8 +1,6 @@
 package com.pnc.project.service;
 
-import com.pnc.project.dto.request.rol.RolRequest;
 import com.pnc.project.dto.request.usuario.UsuarioRequest;
-import com.pnc.project.dto.response.rol.RolResponse;
 import com.pnc.project.dto.response.usuario.UsuarioResponse;
 import com.pnc.project.entities.Materia;
 import com.pnc.project.entities.Rol;

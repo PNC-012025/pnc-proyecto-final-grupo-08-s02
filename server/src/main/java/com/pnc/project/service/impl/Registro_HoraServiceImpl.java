@@ -132,5 +132,10 @@ public class Registro_HoraServiceImpl implements Registro_HoraService {
         return Registro_HoraMapper.toDTOList(registros);
     }
 
+    @Override
+    public List<Registro_HoraResponse> dateListByUsuarioAndRange(int idUsuario, String fechaInicio, String fechaFin) {
+        return List.of();
+    }
+
 
 }

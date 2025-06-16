@@ -23,4 +23,13 @@ public interface ValidacionService {
     //listarFormulariosPendientes() (para encargado)
     //listarValidacionesPorEncargado(id_encargado)
     //rechazarFormulario(id_formulario, observacion)
+    // Listar formularios pendientes (para encargado)
+    List<FormularioResponse> listarFormulariosPendientes();
+
+    // Listar validaciones de un encargado por su ID
+    List<ValidacionResponse> listarValidacionesPorEncargado(Integer idEncargado);
+
+    // Rechazar un formulario por ID con observación
+    void rechazarFormulario(Integer idFormulario, String observacion);
+
 }
