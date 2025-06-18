@@ -1,5 +1,6 @@
 package com.pnc.project.config;
 
+import com.pnc.project.dto.response.usuario.UsuarioResponse;
 import com.pnc.project.entities.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -31,7 +32,7 @@ public class JwtConfig {
     }
 
     // Create token
-    public String createToken(Usuario user) {
+    public String createToken(UsuarioResponse user) {
         Map<String, Object> json = new LinkedHashMap<>();
         json.put("id", user.getIdUsuario());
         return Jwts

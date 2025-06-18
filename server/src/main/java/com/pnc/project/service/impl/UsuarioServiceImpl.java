@@ -90,11 +90,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public UsuarioResponse login(String email, String password) {
-        Usuario usuario = usuarioRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        Usuario usuario = usuarioRepository.findByEmail(email).orElse(null);
+
+        if(usuario == null){
+            return  null;
+        }
 
         if (!passwordEncoder.matches(password, usuario.getPassword())) {
-            throw new RuntimeException("Contraseña incorrecta");
+            return  null;
         }
 
         return UsuarioMapper.toDTO(usuario);

@@ -28,8 +28,6 @@ public interface UsuarioService {
     //Eliminar usuario
     void delete(int id);
 
-
-
     //login
     UsuarioResponse login(String email, String password);
 

@@ -1,11 +1,13 @@
 package com.pnc.project.controllers;
 
+import com.pnc.project.config.JwtConfig;
 import com.pnc.project.dto.request.usuario.UsuarioRequest;
 import com.pnc.project.dto.response.usuario.UsuarioResponse;
 import com.pnc.project.entities.Materia;
 import com.pnc.project.entities.Rol;
 import com.pnc.project.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +19,7 @@ import java.util.List;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
+    private final JwtConfig  jwt;
 
     // Listar todos los usuarios
     @GetMapping
@@ -77,8 +80,13 @@ public class UsuarioController {
 
     // Login de usuario
     @PostMapping("/login")
-    public ResponseEntity<UsuarioResponse> login(@RequestParam String email, @RequestParam String password) {
-        UsuarioResponse usuario = usuarioService.login(email, password);
-        return ResponseEntity.ok(usuario);
+    public ResponseEntity<Object> login(@RequestParam String email, @RequestParam String password) {
+        UsuarioResponse user = usuarioService.login(email, password);
+        if(user != null){
+            String token = jwt.createToken(user);
+            return ResponseEntity.ok(token);
+        }else{
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Username or pass incorrect");
+        }
     }
 }
