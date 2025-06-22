@@ -4,6 +4,8 @@ import com.pnc.project.dto.request.usuario.UsuarioRequest;
 import com.pnc.project.dto.response.usuario.UsuarioResponse;
 import com.pnc.project.entities.Rol;
 import com.pnc.project.entities.Usuario;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
@@ -20,12 +22,13 @@ public class UsuarioMapper {
     }
 
     public static Usuario toEntityCreate(UsuarioRequest usuarioDTO, Rol rol) {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
         return Usuario.builder()
                 .codigoUsuario(usuarioDTO.getCodigoUsuario())
                 .nombre(usuarioDTO.getNombre())
                 .apellido(usuarioDTO.getApellido())
                 .email(usuarioDTO.getCorreo())
-                .password(usuarioDTO.getContrasena())
+                .password(encoder.encode(usuarioDTO.getContrasena()))
                 .rol(rol)
                 .build();
     }

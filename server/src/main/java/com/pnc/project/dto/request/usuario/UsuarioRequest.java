@@ -9,7 +9,6 @@ import lombok.Data;
 @Data
 @Builder
 public class UsuarioRequest {
-    @NotNull(message = "El ID de usuario no puede ser nulo")
     private Integer idUsuario;
 
     @NotNull(message = "El código de usuario no puede ser nulo")

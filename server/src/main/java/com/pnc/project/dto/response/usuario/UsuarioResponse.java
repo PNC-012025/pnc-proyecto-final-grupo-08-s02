@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Builder
 public class UsuarioResponse {
-    private Integer idUsuario;
+    private int idUsuario;
     private String codigoUsuario;
     private String nombre;
     private String apellido;

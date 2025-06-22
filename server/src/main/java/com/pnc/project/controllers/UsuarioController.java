@@ -1,20 +1,24 @@
 package com.pnc.project.controllers;
 
 import com.pnc.project.config.JwtConfig;
+import com.pnc.project.dto.Response;
+import com.pnc.project.dto.request.usuario.Login;
 import com.pnc.project.dto.request.usuario.UsuarioRequest;
 import com.pnc.project.dto.response.usuario.UsuarioResponse;
 import com.pnc.project.entities.Materia;
 import com.pnc.project.entities.Rol;
 import com.pnc.project.service.UsuarioService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/usuarios")
+@RequestMapping(value = "/api/usuarios", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class UsuarioController {
 
@@ -22,7 +26,7 @@ public class UsuarioController {
     private final JwtConfig  jwt;
 
     // Listar todos los usuarios
-    @GetMapping
+    @GetMapping("/list")
     public ResponseEntity<List<UsuarioResponse>> findAll() {
         List<UsuarioResponse> usuarios = usuarioService.findAll();
         return ResponseEntity.ok(usuarios);
@@ -36,7 +40,7 @@ public class UsuarioController {
     }
 
     // Obtener usuario por ID
-    @GetMapping("/{id}")
+    @GetMapping("data/{id}")
     public ResponseEntity<UsuarioResponse> findById(@PathVariable int id) {
         UsuarioResponse usuario = usuarioService.findById(id);
         return ResponseEntity.ok(usuario);
@@ -57,14 +61,14 @@ public class UsuarioController {
     }
 
     // Crear un usuario
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<UsuarioResponse> save(@RequestBody UsuarioRequest usuarioRequest) {
         UsuarioResponse usuario = usuarioService.save(usuarioRequest);
         return ResponseEntity.ok(usuario);
     }
 
     // Actualizar un usuario
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<UsuarioResponse> update(@PathVariable int id, @RequestBody UsuarioRequest usuarioRequest) {
         usuarioRequest.setIdUsuario(id);
         UsuarioResponse usuarioActualizado = usuarioService.update(usuarioRequest);
@@ -72,21 +76,21 @@ public class UsuarioController {
     }
 
     // Eliminar un usuario por su ID
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         usuarioService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
     // Login de usuario
-    @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestParam String email, @RequestParam String password) {
-        UsuarioResponse user = usuarioService.login(email, password);
+    @PostMapping("/auth/login")
+    public ResponseEntity<Object> login(@Valid @RequestBody  Login body) {
+        UsuarioResponse user = usuarioService.login(body.getEmail(), body.getPassword());
         if(user != null){
             String token = jwt.createToken(user);
-            return ResponseEntity.ok(token);
+            return Response.build(HttpStatus.ACCEPTED.value(), "welcome " + user.getNombre(), token);
         }else{
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Username or pass incorrect");
+            return Response.build(HttpStatus.UNAUTHORIZED.value(), "email or password incorrect", null);
         }
     }
 }
