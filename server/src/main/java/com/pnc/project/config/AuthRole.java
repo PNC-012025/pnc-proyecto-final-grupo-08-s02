@@ -58,18 +58,18 @@ public class AuthRole {
                         .requestMatchers(HttpMethod.POST, "/api/save").permitAll()
                         .requestMatchers(HttpMethod.GET, "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html") .permitAll()
                         
-                        .requestMatchers(HttpMethod.GET, "/api/actividades/**").hasAnyRole("MANAGER", "INSTRUCTOR", "PAID_INSTRUCTOR")
-                        .requestMatchers("/api/actividades/**").hasRole("MANAGER") // POST, PUT, DELETE solo para MANAGER
-                        .requestMatchers(HttpMethod.GET, "/api/materias").hasAnyRole("MANAGER", "INSTRUCTOR", "PAID_INSTRUCTOR")
-                        .requestMatchers("/api/materias/**").hasRole("MANAGER") // POST, PUT, DELETE solo para MANAGER
-                        .requestMatchers("/api/usuarios/**").hasRole("MANAGER")
-                        .requestMatchers("/api/roles/**").hasRole("MANAGER")
-                        .requestMatchers("/api/manage/horas/usuario/fecha").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.GET, "/api/actividades/**").hasAnyRole("ENCARGADO", "INSTRUCTOR_NORMAL", "INSTRUCTOR_REMUNERADO")
+                        .requestMatchers("/api/actividades/**").hasRole("ENCARGADO") // POST, PUT, DELETE solo para ENCARGADO
+                        .requestMatchers(HttpMethod.GET, "/api/materias").hasAnyRole("ENCARGADO", "INSTRUCTOR_NORMAL", "INSTRUCTOR_REMUNERADO")
+                        .requestMatchers("/api/materias/**").hasRole("ENCARGADO") // POST, PUT, DELETE solo para ENCARGADO
+                        .requestMatchers("/api/usuarios/**").hasRole("ENCARGADO")
+                        .requestMatchers("/api/roles/**").hasRole("ENCARGADO")
+                        .requestMatchers("/api/manage/horas/usuario/fecha").hasRole("ENCARGADO")
 
                         // Horas: MANAGER tiene acceso total, INSTRUCTOR solo algunos métodos
                         .requestMatchers(HttpMethod.GET, "/api/horas/**")
-                        .hasAnyRole("MANAGER", "INSTRUCTOR", "PAID_INSTRUCTOR")
-                        .requestMatchers("/api/horas/**").hasRole("MANAGER")
+                        .hasAnyRole("ENCARGADO", "INSTRUCTOR_NORMAL", "INSTRUCTOR_REMUNERADO")
+                        .requestMatchers("/api/horas/**").hasRole("ENCARGADO")
 
                         .anyRequest().authenticated())
                 // Manejo de excepciones
