@@ -20,28 +20,28 @@ public class Registro_HoraController {
     }
 
     // Obtener todos los registros de horas
-    @GetMapping
+    @GetMapping("/horas")
     public ResponseEntity<List<Registro_HoraResponse>> findAll() {
         List<Registro_HoraResponse> registros = registroHoraService.findAll();
         return ResponseEntity.ok(registros);
     }
 
     // Obtener un registro de hora por su ID
-    @GetMapping("/{id}")
+    @GetMapping("/horas/{id}")
     public ResponseEntity<Registro_HoraResponse> findById(@PathVariable("id") int id) {
         Registro_HoraResponse registro = registroHoraService.findById(id);
         return ResponseEntity.ok(registro);
     }
 
     // Crear un nuevo registro de hora
-    @PostMapping
+    @PostMapping("/horas")
     public ResponseEntity<Registro_HoraResponse> save(@Valid @RequestBody Registro_HoraRequest registroHoraRequest) {
         Registro_HoraResponse registroGuardado = registroHoraService.save(registroHoraRequest);
         return ResponseEntity.ok(registroGuardado);
     }
 
     // Actualizar un registro de hora existente
-    @PutMapping("/{id}")
+    @PutMapping("/horas/{id}")
     public ResponseEntity<Registro_HoraResponse> update(
             @PathVariable("id") int id,
             @Valid @RequestBody Registro_HoraRequest registroHoraRequest
@@ -52,14 +52,14 @@ public class Registro_HoraController {
     }
 
     // Eliminar un registro de hora por su ID
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/horas/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") int id) {
         registroHoraService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
     // Listar registros por rango de fechas y usuario
-    @GetMapping("/por-fecha-y-usuario")
+    @GetMapping("/manage/horas/usuario/fecha")
     public ResponseEntity<List<Registro_HoraResponse>> findByDateRangeAndUsuario(
             @RequestParam("idUsuario") int idUsuario,
             @RequestParam("fechaInicio") String fechaInicio,

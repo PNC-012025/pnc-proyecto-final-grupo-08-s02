@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/usuarios", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
 public class UsuarioController {
 
@@ -26,35 +26,35 @@ public class UsuarioController {
     private final JwtConfig  jwt;
 
     // Listar todos los usuarios
-    @GetMapping("/list")
+    @GetMapping("/usuarios/list")
     public ResponseEntity<List<UsuarioResponse>> findAll() {
         List<UsuarioResponse> usuarios = usuarioService.findAll();
         return ResponseEntity.ok(usuarios);
     }
 
     // Listar usuarios por materia
-    @GetMapping("/materia")
+    @GetMapping("/usuarios/materia")
     public ResponseEntity<List<UsuarioResponse>> findByMateria(@RequestParam Materia materia) {
         List<UsuarioResponse> usuarios = usuarioService.findByMateria(materia);
         return ResponseEntity.ok(usuarios);
     }
 
     // Obtener usuario por ID
-    @GetMapping("data/{id}")
+    @GetMapping("/usuarios/data/{id}")
     public ResponseEntity<UsuarioResponse> findById(@PathVariable int id) {
         UsuarioResponse usuario = usuarioService.findById(id);
         return ResponseEntity.ok(usuario);
     }
 
     // Obtener usuario por código
-    @GetMapping("/codigo/{codigo}")
+    @GetMapping("/usuarios/codigo/{codigo}")
     public ResponseEntity<UsuarioResponse> findByCodigo(@PathVariable String codigo) {
         UsuarioResponse usuario = usuarioService.findByCodigo(codigo);
         return ResponseEntity.ok(usuario);
     }
 
     // Obtener usuario por rol
-    @GetMapping("/rol")
+    @GetMapping("/usuarios/rol")
     public ResponseEntity<UsuarioResponse> findByRol(@RequestParam Rol rol) {
         UsuarioResponse usuario = usuarioService.findByRol(rol);
         return ResponseEntity.ok(usuario);
@@ -68,7 +68,7 @@ public class UsuarioController {
     }
 
     // Actualizar un usuario
-    @PutMapping("/update/{id}")
+    @PutMapping("/usuarios/update/{id}")
     public ResponseEntity<UsuarioResponse> update(@PathVariable int id, @RequestBody UsuarioRequest usuarioRequest) {
         usuarioRequest.setIdUsuario(id);
         UsuarioResponse usuarioActualizado = usuarioService.update(usuarioRequest);
@@ -76,7 +76,7 @@ public class UsuarioController {
     }
 
     // Eliminar un usuario por su ID
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/usuarios/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
         usuarioService.delete(id);
         return ResponseEntity.noContent().build();
