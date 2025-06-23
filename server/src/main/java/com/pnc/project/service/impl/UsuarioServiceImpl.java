@@ -7,6 +7,7 @@ import com.pnc.project.entities.Materia;
 import com.pnc.project.entities.Rol;
 import com.pnc.project.entities.Usuario;
 import com.pnc.project.entities.UsuarioXMateria;
+import com.pnc.project.repository.RolRepository;
 import com.pnc.project.repository.UsuarioRepository;
 import com.pnc.project.repository.UsuarioXMateriaRepository;
 import com.pnc.project.service.RolService;
@@ -28,7 +29,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UsuarioServiceImpl(UsuarioRepository repository, UsuarioXMateriaRepository usuarioXMateriaRepository,RolService rolService, PasswordEncoder passwordEncoder) {
+    public UsuarioServiceImpl(UsuarioRepository repository, UsuarioXMateriaRepository usuarioXMateriaRepository, RolService rolService, PasswordEncoder passwordEncoder) {
         this.usuarioRepository = repository;
         this.usuarioXMateriaRepository = usuarioXMateriaRepository;
         this.rolService = rolService;
@@ -40,12 +41,22 @@ public class UsuarioServiceImpl implements UsuarioService {
         return UsuarioMapper.toDTOList(usuarioRepository.findAll());
     }
 
+
     @Override
-    public List<UsuarioResponse> findByMateria(Materia materia) {
-        List<UsuarioXMateria> usuariosXMateria = usuarioXMateriaRepository.findByMateria(materia);
+    public List<UsuarioResponse> findByMateriaId(Integer materiaId) {
+        List<UsuarioXMateria> usuariosXMateria = usuarioXMateriaRepository.findByMateria_IdMateria(materiaId);
 
         return usuariosXMateria.stream()
                 .map(UsuarioXMateria::getUsuario)
+                .distinct()
+                .map(UsuarioMapper::toDTO)
+                .toList();
+    }
+
+    public List<UsuarioResponse> findByRolId(Integer rolId) {
+        List<Usuario> usuarios = usuarioRepository.findByRol_IdRol(rolId);
+
+        return usuarios.stream()
                 .distinct()
                 .map(UsuarioMapper::toDTO)
                 .toList();
@@ -63,14 +74,6 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .orElseThrow(() -> new RuntimeException("Usuario not found")));
     }
 
-
-    @Override
-    public UsuarioResponse findByRol(Rol rol) {
-        return UsuarioMapper.toDTO(
-                usuarioRepository.findByRol(rol)
-                        .orElseThrow(() -> new RuntimeException("Usuario con rol '" + rol.getNombreRol() + "' no encontrado"))
-        );
-    }
 
     @Override
     public UsuarioResponse save(UsuarioRequest usuario) {

@@ -4,6 +4,7 @@ import com.pnc.project.dto.request.usuario.UsuarioRequest;
 import com.pnc.project.dto.response.usuario.UsuarioResponse;
 import com.pnc.project.entities.Materia;
 import com.pnc.project.entities.Rol;
+import com.pnc.project.entities.Usuario;
 
 
 import java.util.List;
@@ -12,14 +13,14 @@ public interface UsuarioService {
     //Listar usuarios
     List<UsuarioResponse> findAll();
     //Listar usuario por materia
-    List<UsuarioResponse> findByMateria(Materia materia);
+    List<UsuarioResponse> findByMateriaId(Integer materiaId);
 
     //Obtener usuario por id
     UsuarioResponse findById(int id);
     //Obtener usuario por código
     UsuarioResponse findByCodigo(String codigo);
     //Obtener usuario por rol
-    UsuarioResponse findByRol(Rol rol);
+    List<UsuarioResponse> findByRolId(Integer rolId);
 
     //Crear usuario
     UsuarioResponse save(UsuarioRequest usuario);

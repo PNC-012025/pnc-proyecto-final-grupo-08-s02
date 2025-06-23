@@ -34,8 +34,8 @@ public class UsuarioController {
 
     // Listar usuarios por materia
     @GetMapping("/usuarios/materia")
-    public ResponseEntity<List<UsuarioResponse>> findByMateria(@RequestParam Materia materia) {
-        List<UsuarioResponse> usuarios = usuarioService.findByMateria(materia);
+    public ResponseEntity<List<UsuarioResponse>> findByMateria(@RequestParam("idMateria") int idMateria) {
+        List<UsuarioResponse> usuarios = usuarioService.findByMateriaId(idMateria);
         return ResponseEntity.ok(usuarios);
     }
 
@@ -55,8 +55,8 @@ public class UsuarioController {
 
     // Obtener usuario por rol
     @GetMapping("/usuarios/rol")
-    public ResponseEntity<UsuarioResponse> findByRol(@RequestParam Rol rol) {
-        UsuarioResponse usuario = usuarioService.findByRol(rol);
+    public ResponseEntity<List<UsuarioResponse>> findByRol(@RequestParam("idRol") int idRol) {
+        List<UsuarioResponse> usuario = usuarioService.findByRolId(idRol);
         return ResponseEntity.ok(usuario);
     }
 
