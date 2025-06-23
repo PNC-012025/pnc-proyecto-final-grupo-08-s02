@@ -1,5 +1,6 @@
 package com.pnc.project.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pnc.project.dto.response.usuario.UsuarioResponse;
 import com.pnc.project.service.UsuarioService;
 import jakarta.servlet.FilterChain;
@@ -9,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -18,23 +21,31 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.time.Instant;
+import java.util.Map;
 
 @Component
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
+      private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
     private final UsuarioService usuarioService;
     private final JwtConfig jwtConfig;
+    private final ObjectMapper objectMapper; // Añade esto para manejar JSON
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request,  HttpServletResponse response,  FilterChain filterChain)
-        throws ServletException, IOException {
-        
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
         try {
             String token = extractToken(request);
-            if (token == null || jwtConfig.isTokenExpired(token)) {
+
+            if (token == null) {
                 filterChain.doFilter(request, response);
+                return;
+            }
+
+            if (jwtConfig.isTokenExpired(token)) {
+                sendErrorResponse(response, HttpStatus.UNAUTHORIZED, "Token expirado");
                 return;
             }
 
@@ -43,25 +54,24 @@ public class JwtFilter extends OncePerRequestFilter {
 
             UserDetails userDetails = User.builder()
                 .username(usuario.getCorreo())
-                .password("") // No necesitas la contraseña aquí
+                .password("")
                 .roles(usuario.getRol())
                 .build();
 
-            UsernamePasswordAuthenticationToken authentication = 
+            UsernamePasswordAuthenticationToken authentication =
                 new UsernamePasswordAuthenticationToken(
-                    userDetails, 
-                    null, 
+                    userDetails,
+                    null,
                     userDetails.getAuthorities());
-            
-            authentication.setDetails(
-                new WebAuthenticationDetailsSource().buildDetails(request));
-            
+
+            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            
+
+            filterChain.doFilter(request, response);
+
         } catch (Exception e) {
             logger.error("Error en autenticación JWT", e);
-        } finally {
-            filterChain.doFilter(request, response);
+            sendErrorResponse(response, HttpStatus.UNAUTHORIZED, "Autenticación fallida: " + e.getMessage());
         }
     }
 
@@ -71,5 +81,18 @@ public class JwtFilter extends OncePerRequestFilter {
             return authHeader.substring(7);
         }
         return null;
+    }
+
+    private void sendErrorResponse(HttpServletResponse response, HttpStatus status, String message) throws IOException {
+        response.setStatus(status.value());
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.getWriter().write(objectMapper.writeValueAsString(
+            Map.of(
+                "status", status.value(),
+                "error", status.getReasonPhrase(),
+                "message", message,
+                "timestamp", Instant.now().toString()
+            )
+        ));
     }
 }
