@@ -35,7 +35,7 @@ public class UsuarioXMateriaServiceImpl implements UsuarioXMateriaService {
         Usuario usuario = usuarioRepository.findByCodigoUsuario(usuarioXMateria.getCodigoUsuario())
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        Materia materia = materiaRepository.findByNombreMateria(usuarioXMateria.getNombreMateria())
+        Materia materia = materiaRepository.findByNombreMateria(usuarioXMateria.getNombreMateria().toUpperCase())
                 .orElseThrow(() -> new RuntimeException("Materia no encontrada"));
 
         return UsuarioXMateriaMapper.toDTO(usuarioXMateriaRepository.save(UsuarioXMateriaMapper.toEntityCreate(usuario, materia)));

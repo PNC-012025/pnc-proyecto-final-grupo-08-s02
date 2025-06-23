@@ -11,8 +11,8 @@ import java.time.LocalTime;
 @Data
 @Builder
 public class Registro_HoraRequest {
-    @NotNull(message = "El ID de actividad no puede ser nulo")
-    private Integer idActividad;
+
+    private Integer idRegistro;
 
     @NotNull(message = "La fecha de registro no puede ser nula")
     private LocalDate fechaRegistro;
@@ -32,12 +32,11 @@ public class Registro_HoraRequest {
     @NotNull(message = "El código de usuario no puede ser nulo")
     private String codigoUsuario;
 
-    @NotNull(message = "El nombre de actividad no puede ser nulo")
-    private String nombreActividad;
 
     @NotNull(message = "El id del formulario no puede ser nulo")
     private Integer idFormulario;
 
-    private Integer idRegistro;
+    @NotNull(message = "El id de actividad no puede ser nulo")
+    private Integer idActividad;
 
 }

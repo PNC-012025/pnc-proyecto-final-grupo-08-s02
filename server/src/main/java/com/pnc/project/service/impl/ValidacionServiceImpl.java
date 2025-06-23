@@ -76,7 +76,7 @@ public class ValidacionServiceImpl implements ValidacionService {
         validacionExistente.setUsuario(usuario);
         validacionExistente.setFormulario(formulario);
         validacionExistente.setEstadoValidacion(validacionRequest.getEstadoValidacion());
-        validacionExistente.setFechaValidacion(validacionRequest.getFeachaValidacion());
+        validacionExistente.setFechaValidacion(validacionRequest.getFechaValidacion());
 
         Validacion updatedValidacion = validacionRepository.save(validacionExistente);
         return ValidacionMapper.toDTO(updatedValidacion);

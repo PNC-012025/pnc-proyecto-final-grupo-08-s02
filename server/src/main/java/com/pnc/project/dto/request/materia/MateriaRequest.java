@@ -8,7 +8,6 @@ import lombok.Data;
 @Data
 @Builder
 public class MateriaRequest {
-    @NotNull(message = "El ID de la materia no puede ser nulo")
     private Integer idMateria;
 
     @NotNull(message = "El nombre de la materia no puede ser nulo")

@@ -18,7 +18,7 @@ public class ActividadMapper {
     public static Actividad toEntityCreate(ActividadRequest actividadDTO) {
         return Actividad.builder()
                 .actividadNombre(actividadDTO.getNombreActividad())
-                .tipoActividad(actividadDTO.getTipoActividad())
+                .tipoActividad(actividadDTO.getTipoActividad().toUpperCase())
                 .build();
     }
 
@@ -26,7 +26,7 @@ public class ActividadMapper {
         return Actividad.builder()
                 .idActividad(actividadDTO.getIdActividad())
                 .actividadNombre(actividadDTO.getNombreActividad())
-                .tipoActividad(actividadDTO.getTipoActividad())
+                .tipoActividad(actividadDTO.getTipoActividad().toUpperCase())
                 .build();
     }
 

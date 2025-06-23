@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Builder
 public class ActividadRequest {
-    @NotNull(message = "No puedes enviar un ID nulo")
+
     private Integer idActividad;
 
     @NotNull(message = "No puedes enviar un nombre nulo")

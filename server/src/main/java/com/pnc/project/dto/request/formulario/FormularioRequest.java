@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class FormularioRequest {
-    @NotNull(message = "El ID del formulario no puede ser nulo")
+
     private Integer idFormulario;
 
     @NotNull(message = "La fecha de creación no puede ser nula")

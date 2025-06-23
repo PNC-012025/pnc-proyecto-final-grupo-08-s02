@@ -22,7 +22,7 @@ public class ValidacionMapper {
 
     public static Validacion toEntityCreate(ValidacionRequest validacionDTO, Usuario usuario, Formulario formulario) {
         return Validacion.builder()
-                .fechaValidacion(validacionDTO.getFeachaValidacion())
+                .fechaValidacion(validacionDTO.getFechaValidacion())
                 .estadoValidacion(validacionDTO.getEstadoValidacion())
                 .usuario(usuario)
                 .formulario(formulario)

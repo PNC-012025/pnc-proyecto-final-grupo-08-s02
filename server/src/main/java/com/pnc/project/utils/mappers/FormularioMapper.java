@@ -20,7 +20,7 @@ public class FormularioMapper {
     public static Formulario toEntityCreate(FormularioRequest formularioDTO, Usuario usuario) {
         return Formulario.builder()
                 .fechaCreacion(formularioDTO.getFechaCreacion())
-                .estado(formularioDTO.getEstado())
+                .estado(formularioDTO.getEstado().toUpperCase())
                 .usuario(usuario)
                 .build();
     }
@@ -29,7 +29,7 @@ public class FormularioMapper {
         return Formulario.builder()
                 .idFormulario(formularioDTO.getIdFormulario())
                 .fechaCreacion(formularioDTO.getFechaCreacion())
-                .estado(formularioDTO.getEstado())
+                .estado(formularioDTO.getEstado().toUpperCase())
                 .usuario(usuario)
                 .build();
     }
