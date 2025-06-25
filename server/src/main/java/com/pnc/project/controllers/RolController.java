@@ -1,5 +1,6 @@
 package com.pnc.project.controllers;
 
+import com.pnc.project.dto.RolEnum;
 import com.pnc.project.dto.request.rol.RolRequest;
 import com.pnc.project.dto.response.rol.RolResponse;
 import com.pnc.project.service.RolService;
@@ -25,7 +26,7 @@ public class RolController {
 
     @GetMapping("/{name}")
     public ResponseEntity<RolResponse> findByName(@PathVariable("name") String name) {
-        RolResponse rol = rolService.findByName(name);
+        RolResponse rol = rolService.findByName(RolEnum.valueOf(name).toString());
         return ResponseEntity.ok(rol);
     }
 
