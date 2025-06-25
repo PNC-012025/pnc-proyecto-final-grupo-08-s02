@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioXMateriaServiceImpl implements UsuarioXMateriaService {
@@ -37,6 +38,11 @@ public class UsuarioXMateriaServiceImpl implements UsuarioXMateriaService {
 
         Materia materia = materiaRepository.findByNombreMateria(usuarioXMateria.getNombreMateria().toUpperCase())
                 .orElseThrow(() -> new RuntimeException("Materia no encontrada"));
+
+        Optional<UsuarioXMateria> existente = usuarioXMateriaRepository.findByUsuarioAndMateria(usuario, materia);
+        if (existente.isPresent()) {
+            throw new RuntimeException("La relación entre usuario y materia ya existe.");
+        }
 
         return UsuarioXMateriaMapper.toDTO(usuarioXMateriaRepository.save(UsuarioXMateriaMapper.toEntityCreate(usuario, materia)));
     }
