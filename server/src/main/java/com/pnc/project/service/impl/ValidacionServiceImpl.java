@@ -86,7 +86,7 @@ public class ValidacionServiceImpl implements ValidacionService {
 
     @Override
     public List<FormularioResponse> listarFormulariosPendientes() {
-        List<Formulario> formulariosPendientes = formularioRepository.findByEstado("PENDIENTE");
+        List<Formulario> formulariosPendientes = formularioRepository.findByEstado(EstadoFormulario.PENDIENTE);
         return FormularioMapper.toDTOList(formulariosPendientes);
     }
 
