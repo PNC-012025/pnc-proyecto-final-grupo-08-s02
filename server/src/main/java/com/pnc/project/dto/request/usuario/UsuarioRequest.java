@@ -1,5 +1,6 @@
 package com.pnc.project.dto.request.usuario;
 
+import com.pnc.project.utils.enums.RolNombre;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -28,5 +29,5 @@ public class UsuarioRequest {
     private String contrasena;
 
     @NotNull(message = "El rol no puede ser nulo")
-    private String rol;
+    private RolNombre rol;   // ← enum en vez de String o Integer
 }

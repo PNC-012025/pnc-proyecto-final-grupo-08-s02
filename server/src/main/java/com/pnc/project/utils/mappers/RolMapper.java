@@ -6,29 +6,35 @@ import com.pnc.project.entities.Rol;
 
 import java.util.List;
 
-public class RolMapper {
-    public static Rol toEntity(RolResponse rolDTO){
+public final class RolMapper {
+
+    private RolMapper() { }   // evitar instancias
+
+    /* ---------- Request → Entity  (crear) ---------- */
+    public static Rol toEntityCreate(RolRequest dto) {
         return Rol.builder()
-                .idRol(rolDTO.getIdRol())
-                .nombreRol(rolDTO.getNombreRol())
+                .nombre(dto.getNombre())
                 .build();
     }
 
-    public static Rol toEntityCreate(RolRequest rolDTO) {
+    /* ---------- Response → Entity  (opcional) ---------- */
+    public static Rol toEntity(RolResponse dto) {
         return Rol.builder()
-                .nombreRol(rolDTO.getNombreRol())
+                .idRol(dto.getIdRol())
+                .nombre(dto.getNombre())
                 .build();
     }
 
+    /* ---------- Entity → Response ---------- */
     public static RolResponse toDTO(Rol rol) {
         return RolResponse.builder()
                 .idRol(rol.getIdRol())
-                .nombreRol(rol.getNombreRol())
+                .nombre(rol.getNombre())
                 .build();
     }
 
-    public static List<RolResponse> toDTOList(List<Rol> rols) {
-        return rols.stream()
+    public static List<RolResponse> toDTOList(List<Rol> list) {
+        return list.stream()
                 .map(RolMapper::toDTO)
                 .toList();
     }

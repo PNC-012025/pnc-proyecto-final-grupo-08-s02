@@ -1,6 +1,7 @@
 package com.pnc.project.dto.response.usuario;
 
 
+import com.pnc.project.utils.enums.RolNombre;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,5 +14,6 @@ public class UsuarioResponse {
     private String apellido;
     private String correo;
     private String contrasena;
-    private String rol;
+    private RolNombre rol;   // ya no String ni Integer
+
 }

@@ -2,6 +2,7 @@ package com.pnc.project.dto.request.actividad;
 
 import com.pnc.project.utils.enums.ActividadNombre;
 import com.pnc.project.utils.enums.RolNombre;
+import com.pnc.project.validation.ActividadRolValida;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
@@ -9,6 +10,7 @@ import lombok.Data;
 
 @Data
 @Builder
+@ActividadRolValida
 public class ActividadRequest {
 
     private Integer idActividad;

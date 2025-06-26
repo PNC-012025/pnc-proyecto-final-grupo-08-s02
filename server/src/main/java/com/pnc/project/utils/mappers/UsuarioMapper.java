@@ -10,26 +10,29 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.List;
 
 public class UsuarioMapper {
-    public static Usuario toEntity(UsuarioResponse usuarioDTO) {
+    public static Usuario toEntity(UsuarioResponse dto) {
         return Usuario.builder()
-                .idUsuario(usuarioDTO.getIdUsuario())
-                .codigoUsuario(usuarioDTO.getCodigoUsuario())
-                .nombre(usuarioDTO.getNombre())
-                .apellido(usuarioDTO.getApellido())
-                .email(usuarioDTO.getCorreo())
-                .rol(Rol.builder().nombreRol(usuarioDTO.getNombre()).build())
+                .idUsuario(dto.getIdUsuario())
+                .codigoUsuario(dto.getCodigoUsuario())
+                .nombre(dto.getNombre())
+                .apellido(dto.getApellido())
+                .email(dto.getCorreo())
+                .rol(Rol.builder()
+                        .nombre(dto.getRol())        // enum directo
+                        .build())
                 .build();
     }
 
-    public static Usuario toEntityCreate(UsuarioRequest usuarioDTO, Rol rol) {
+    public static Usuario toEntityCreate(UsuarioRequest dto, Rol rol) {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
+
         return Usuario.builder()
-                .codigoUsuario(usuarioDTO.getCodigoUsuario())
-                .nombre(usuarioDTO.getNombre())
-                .apellido(usuarioDTO.getApellido())
-                .email(usuarioDTO.getCorreo())
-                .password(encoder.encode(usuarioDTO.getContrasena()))
-                .rol(rol)
+                .codigoUsuario(dto.getCodigoUsuario())
+                .nombre(dto.getNombre())
+                .apellido(dto.getApellido())
+                .email(dto.getCorreo())
+                .password(encoder.encode(dto.getContrasena()))
+                .rol(rol)                            // entidad Rol ya buscada
                 .build();
     }
 
@@ -52,7 +55,7 @@ public class UsuarioMapper {
                 .nombre(usuario.getNombre())
                 .apellido(usuario.getApellido())
                 .correo(usuario.getEmail())
-                .rol(usuario.getRol().getNombreRol())
+                .rol(usuario.getRol().getNombre())   // enum RolNombre
                 .build();
     }
 
