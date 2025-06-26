@@ -1,6 +1,6 @@
-package com.pnc.project.dto;
+package com.pnc.project.utils.enums;
 
-public enum RolEnum {
+public enum RolNombre {
     ENCARGADO,
     INSTRUCTOR_NORMAL,
     INSTRUCTOR_REMUNERADO
