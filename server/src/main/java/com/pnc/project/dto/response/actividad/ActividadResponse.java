@@ -1,5 +1,7 @@
 package com.pnc.project.dto.response.actividad;
 
+import com.pnc.project.utils.enums.ActividadNombre;
+import com.pnc.project.utils.enums.TipoActividad;
 import lombok.Builder;
 import lombok.Data;
 
@@ -7,6 +9,6 @@ import lombok.Data;
 @Builder
 public class ActividadResponse {
     private Integer idActividad;
-    private String nombreActividad;
-    private String tipoActividad;
+    private ActividadNombre nombreActividad;
+    private TipoActividad tipoActividad;
 }

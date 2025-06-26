@@ -3,44 +3,36 @@ package com.pnc.project.utils.mappers;
 import com.pnc.project.dto.request.actividad.ActividadRequest;
 import com.pnc.project.dto.response.actividad.ActividadResponse;
 import com.pnc.project.entities.Actividad;
+import com.pnc.project.utils.enums.TipoActividad;
 
 import java.util.List;
 
 public class ActividadMapper {
-    public static Actividad toEntity(ActividadResponse actividadDTO){
+
+    public static Actividad toEntityCreate(ActividadRequest req, TipoActividad tipo) {
         return Actividad.builder()
-                .idActividad(actividadDTO.getIdActividad())
-                .actividadNombre(actividadDTO.getNombreActividad())
-                .tipoActividad(actividadDTO.getTipoActividad())
+                .nombre(req.getNombreActividad())
+                .tipoActividad(tipo)
                 .build();
     }
 
-    public static Actividad toEntityCreate(ActividadRequest actividadDTO) {
+    public static Actividad toEntityUpdate(ActividadRequest req, TipoActividad tipo) {
         return Actividad.builder()
-                .actividadNombre(actividadDTO.getNombreActividad())
-                .tipoActividad(actividadDTO.getTipoActividad().toUpperCase())
+                .idActividad(req.getIdActividad())
+                .nombre(req.getNombreActividad())
+                .tipoActividad(tipo)
                 .build();
     }
 
-    public static Actividad toEntityUpdate(ActividadRequest actividadDTO) {
-        return Actividad.builder()
-                .idActividad(actividadDTO.getIdActividad())
-                .actividadNombre(actividadDTO.getNombreActividad())
-                .tipoActividad(actividadDTO.getTipoActividad().toUpperCase())
-                .build();
-    }
-
-    public static ActividadResponse toDTO(Actividad actividad) {
+    public static ActividadResponse toDTO(Actividad a) {
         return ActividadResponse.builder()
-                .idActividad(actividad.getIdActividad())
-                .nombreActividad(actividad.getActividadNombre())
-                .tipoActividad(actividad.getTipoActividad())
+                .idActividad(a.getIdActividad())
+                .nombreActividad(a.getNombre())
+                .tipoActividad(a.getTipoActividad())
                 .build();
     }
 
-    public static List<ActividadResponse> toDTOList(List<Actividad> actividades) {
-        return actividades.stream()
-                .map(ActividadMapper::toDTO)
-                .toList();
+    public static List<ActividadResponse> toDTOList(List<Actividad> list) {
+        return list.stream().map(ActividadMapper::toDTO).toList();
     }
 }

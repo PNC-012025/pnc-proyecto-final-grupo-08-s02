@@ -1,5 +1,7 @@
 package com.pnc.project.dto.request.actividad;
 
+import com.pnc.project.utils.enums.ActividadNombre;
+import com.pnc.project.utils.enums.RolNombre;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
@@ -11,11 +13,10 @@ public class ActividadRequest {
 
     private Integer idActividad;
 
-    @NotNull(message = "No puedes enviar un nombre nulo")
-    @NotBlank(message = "El nombre de la actividad no puede estar vacío")
-    private String nombreActividad;
+    @NotNull(message = "El nombre de la actividad es obligatorio")
+    private ActividadNombre nombreActividad;
 
-    @NotNull(message = "No puedes enviar un tipo nulo")
-    @NotBlank(message = "El tipo de la actividad no puede estar vacío")
-    private String tipoActividad;
+    @NotNull(message = "El rol del instructor es obligatorio")
+    private RolNombre rolInstructor;   // llega del front
+
 }

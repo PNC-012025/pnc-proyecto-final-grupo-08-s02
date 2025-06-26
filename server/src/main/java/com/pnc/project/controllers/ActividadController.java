@@ -3,6 +3,7 @@ package com.pnc.project.controllers;
 import com.pnc.project.dto.request.actividad.ActividadRequest;
 import com.pnc.project.dto.response.actividad.ActividadResponse;
 import com.pnc.project.service.ActividadService;
+import com.pnc.project.utils.enums.TipoActividad;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class ActividadController {
     // Listar actividades por tipo
     @GetMapping("/tipo/{tipo}")
     public ResponseEntity<List<ActividadResponse>> findByTipo(@PathVariable String tipo) {
-        List<ActividadResponse> actividades = actividadService.findByTipo(tipo);
+        List<ActividadResponse> actividades = actividadService.findByTipo(TipoActividad.valueOf(tipo));
         return ResponseEntity.ok(actividades);
     }
 
