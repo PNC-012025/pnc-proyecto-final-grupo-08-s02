@@ -1,5 +1,6 @@
 package com.pnc.project.dto.request.validacion;
 
+import com.pnc.project.utils.enums.EstadoValidacion;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class ValidacionRequest {
     private LocalDate fechaValidacion;
 
     @NotNull(message = "Estado de validación no puede ser nulo")
-    private Boolean estadoValidacion;
+    private EstadoValidacion estado;
 
     @NotNull(message = "Código de usuario no puede ser nulo")
     private String codigoUsuario;

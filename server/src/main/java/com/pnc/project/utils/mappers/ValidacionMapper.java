@@ -14,7 +14,7 @@ public class ValidacionMapper {
         return Validacion.builder()
                 .idValidacion(validacionDTO.getIdValidacion())
                 .fechaValidacion(validacionDTO.getFeachaValidacion())
-                .estadoValidacion(validacionDTO.getEstadoValidacion())
+                .estado(validacionDTO.getEstado())           // enum
                 .usuario(Usuario.builder().codigoUsuario(validacionDTO.getCodigoUsuario()).build())
                 .formulario(Formulario.builder().idFormulario(validacionDTO.getIdFormulario()).build())
                 .build();
@@ -23,7 +23,7 @@ public class ValidacionMapper {
     public static Validacion toEntityCreate(ValidacionRequest validacionDTO, Usuario usuario, Formulario formulario) {
         return Validacion.builder()
                 .fechaValidacion(validacionDTO.getFechaValidacion())
-                .estadoValidacion(validacionDTO.getEstadoValidacion())
+                .estado(validacionDTO.getEstado())           // enum
                 .usuario(usuario)
                 .formulario(formulario)
                 .build();
@@ -33,13 +33,16 @@ public class ValidacionMapper {
         return ValidacionResponse.builder()
                 .idValidacion(validacion.getIdValidacion())
                 .feachaValidacion(validacion.getFechaValidacion())
-                .estadoValidacion(validacion.getEstadoValidacion())
+                .estado(validacion.getEstado())           // enum
                 .codigoUsuario(validacion.getUsuario().getCodigoUsuario())
                 .idFormulario(validacion.getFormulario().getIdFormulario())
                 .build();
     }
 
     public static List<ValidacionResponse> toDTOList(List<Validacion> validaciones) {
+        if (validaciones == null) {
+            return List.of();                // opcional: evita NullPointerException
+        }
         return validaciones.stream()
                 .map(ValidacionMapper::toDTO)
                 .toList();

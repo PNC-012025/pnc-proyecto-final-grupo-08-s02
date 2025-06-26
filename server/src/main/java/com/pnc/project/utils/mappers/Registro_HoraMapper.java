@@ -2,57 +2,103 @@ package com.pnc.project.utils.mappers;
 
 import com.pnc.project.dto.request.registro_hora.Registro_HoraRequest;
 import com.pnc.project.dto.response.registro_hora.Registro_HoraResponse;
-import com.pnc.project.entities.Actividad;
-import com.pnc.project.entities.Formulario;
-import com.pnc.project.entities.Registro_Hora;
-import com.pnc.project.entities.Usuario;
+import com.pnc.project.entities.*;
+import com.pnc.project.utils.enums.ActividadNombre;
 
 import java.util.List;
 
-public class Registro_HoraMapper {
-    public static Registro_Hora toEntity(Registro_HoraResponse registroHoraDTO) {
+/**
+ * Conversor entre la entidad Registro_Hora y sus DTOs.
+ */
+public final class Registro_HoraMapper {
+
+    private Registro_HoraMapper() { }
+
+    /* ------------------------------------------------------------------
+     *   1) Response  ->  Entity   (rara vez se usa, pero lo mantenemos)
+     * ------------------------------------------------------------------ */
+    public static Registro_Hora toEntity(Registro_HoraResponse dto) {
+        if (dto == null) return null;
+
         return Registro_Hora.builder()
-                .idRegistroHora(registroHoraDTO.getIdRegistro())
-                .fechaRegistro(registroHoraDTO.getFechaRegistro())
-                .horaInicio(registroHoraDTO.getHoraInicio())
-                .horaFin(registroHoraDTO.getHoraFin())
-                .horasEfectivas(registroHoraDTO.getHorasEfectivas())
-                .aula(registroHoraDTO.getAula())
-                .usuario(Usuario.builder().codigoUsuario(registroHoraDTO.getCodigoUsuario()).build())
-                .actividad(Actividad.builder().actividadNombre(registroHoraDTO.getNombreActividad()).build())
-                .formulario(Formulario.builder().idFormulario(registroHoraDTO.getIdFormulario()).build())
+                .idRegistroHora(dto.getIdRegistro())
+                .fechaRegistro(dto.getFechaRegistro())
+                .horaInicio(dto.getHoraInicio())
+                .horaFin(dto.getHoraFin())
+                .horasEfectivas(dto.getHorasEfectivas())
+                .aula(dto.getAula())
+                .usuario(Usuario.builder()
+                        .codigoUsuario(dto.getCodigoUsuario())
+                        .build())
+                .actividad(Actividad.builder()
+                        .nombre(dto.getNombreActividad())   // enum
+                        .build())
+                .formulario(Formulario.builder()
+                        .idFormulario(dto.getIdFormulario())
+                        .build())
                 .build();
     }
 
-    public static Registro_Hora toEntityCreate(Registro_HoraRequest registroHoraDTO, Usuario usuario, Actividad actividad, Formulario formulario) {
+    /* ------------------------------------------------------------------
+     *   2) Request  ->  Entity   (crear)
+     * ------------------------------------------------------------------ */
+    public static Registro_Hora toEntityCreate(Registro_HoraRequest dto,
+                                               Usuario    usuario,
+                                               Actividad  actividad,
+                                               Formulario formulario) {
+
         return Registro_Hora.builder()
-                .fechaRegistro(registroHoraDTO.getFechaRegistro())
-                .horaInicio(registroHoraDTO.getHoraInicio())
-                .horaFin(registroHoraDTO.getHoraFin())
-                .horasEfectivas(registroHoraDTO.getHorasEfectivas())
-                .aula(registroHoraDTO.getAula())
+                .fechaRegistro(dto.getFechaRegistro())
+                .horaInicio(dto.getHoraInicio())
+                .horaFin(dto.getHoraFin())
+                .horasEfectivas(dto.getHorasEfectivas())
+                .aula(dto.getAula())
                 .usuario(usuario)
                 .actividad(actividad)
                 .formulario(formulario)
                 .build();
     }
 
-    public static Registro_HoraResponse toDTO(Registro_Hora registroHora) {
-        return Registro_HoraResponse.builder()
-                .idRegistro(registroHora.getIdRegistroHora())
-                .fechaRegistro(registroHora.getFechaRegistro())
-                .horaInicio(registroHora.getHoraInicio())
-                .horaFin(registroHora.getHoraFin())
-                .horasEfectivas(registroHora.getHorasEfectivas())
-                .aula(registroHora.getAula())
-                .codigoUsuario(registroHora.getUsuario().getCodigoUsuario())
-                .nombreActividad(registroHora.getActividad().getActividadNombre())
-                .idFormulario(registroHora.getFormulario().getIdFormulario())
+    /* ------------------------------------------------------------------
+     *   3) Request  ->  Entity   (update)
+     * ------------------------------------------------------------------ */
+    public static Registro_Hora toEntityUpdate(Registro_HoraRequest dto,
+                                               Usuario    usuario,
+                                               Actividad  actividad,
+                                               Formulario formulario) {
+
+        return Registro_Hora.builder()
+                .idRegistroHora(dto.getIdRegistro())
+                .fechaRegistro(dto.getFechaRegistro())
+                .horaInicio(dto.getHoraInicio())
+                .horaFin(dto.getHoraFin())
+                .horasEfectivas(dto.getHorasEfectivas())
+                .aula(dto.getAula())
+                .usuario(usuario)
+                .actividad(actividad)
+                .formulario(formulario)
                 .build();
     }
 
-    public static List<Registro_HoraResponse> toDTOList(List<Registro_Hora> registroHoras) {
-        return registroHoras.stream()
+    /* ------------------------------------------------------------------
+     *   4) Entity  ->  Response
+     * ------------------------------------------------------------------ */
+    public static Registro_HoraResponse toDTO(Registro_Hora rh) {
+        return Registro_HoraResponse.builder()
+                .idRegistro(rh.getIdRegistroHora())
+                .fechaRegistro(rh.getFechaRegistro())
+                .horaInicio(rh.getHoraInicio())
+                .horaFin(rh.getHoraFin())
+                .horasEfectivas(rh.getHorasEfectivas())
+                .aula(rh.getAula())
+                .codigoUsuario(rh.getUsuario().getCodigoUsuario())
+                .nombreActividad(rh.getActividad().getNombre())          // enum
+                .idFormulario(rh.getFormulario().getIdFormulario())
+                .build();
+    }
+
+    public static List<Registro_HoraResponse> toDTOList(List<Registro_Hora> list) {
+        return list.stream()
                 .map(Registro_HoraMapper::toDTO)
                 .toList();
     }

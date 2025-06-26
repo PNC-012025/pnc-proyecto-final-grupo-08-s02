@@ -1,5 +1,6 @@
 package com.pnc.project.dto.response.registro_hora;
 
+import com.pnc.project.utils.enums.ActividadNombre;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,6 +18,6 @@ public class Registro_HoraResponse {
     private BigDecimal horasEfectivas;
     private String aula;
     private String codigoUsuario;
-    private String nombreActividad;
+    private ActividadNombre nombreActividad;
     private Integer idFormulario;
 }

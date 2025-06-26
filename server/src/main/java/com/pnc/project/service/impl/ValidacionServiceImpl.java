@@ -13,6 +13,8 @@ import com.pnc.project.repository.UsuarioRepository;
 import com.pnc.project.service.FormularioService;
 import com.pnc.project.service.UsuarioService;
 import com.pnc.project.service.ValidacionService;
+import com.pnc.project.utils.enums.EstadoFormulario;
+import com.pnc.project.utils.enums.EstadoValidacion;
 import com.pnc.project.utils.mappers.FormularioMapper;
 import com.pnc.project.utils.mappers.UsuarioMapper;
 import com.pnc.project.utils.mappers.ValidacionMapper;
@@ -75,7 +77,7 @@ public class ValidacionServiceImpl implements ValidacionService {
 
         validacionExistente.setUsuario(usuario);
         validacionExistente.setFormulario(formulario);
-        validacionExistente.setEstadoValidacion(validacionRequest.getEstadoValidacion());
+        validacionExistente.setEstado(validacionRequest.getEstado());
         validacionExistente.setFechaValidacion(validacionRequest.getFechaValidacion());
 
         Validacion updatedValidacion = validacionRepository.save(validacionExistente);
@@ -100,18 +102,20 @@ public class ValidacionServiceImpl implements ValidacionService {
     @Override
     @Transactional
     public void rechazarFormulario(Integer idFormulario, String observacion) {
+
         Formulario formulario = formularioRepository.findById(idFormulario)
                 .orElseThrow(() -> new RuntimeException("Formulario no encontrado"));
 
-        formulario.setEstado("RECHAZADO");
+        /* 1) Cambiar estado del formulario */
+        formulario.setEstado(EstadoFormulario.DENEGADO);   // enum, no String
         formularioRepository.save(formulario);
 
-        // Crear una nueva instancia de validación sin observacion
+        /* 2) Crear la validación asociada */
         Validacion validacion = Validacion.builder()
                 .fechaValidacion(LocalDate.now())
-                .estadoValidacion(false) // Estado de validación rechazado
+                .estado(EstadoValidacion.DENEGADA)         // enum
                 .formulario(formulario)
-                .usuario(null) // Cambiar si se requiere asignar el usuario que rechaza
+                .usuario(null)    // TODO: asigna el usuario que rechaza, si aplica
                 .build();
 
         validacionRepository.save(validacion);

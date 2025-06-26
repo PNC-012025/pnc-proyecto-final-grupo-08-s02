@@ -55,7 +55,7 @@ public class JwtFilter extends OncePerRequestFilter {
             UserDetails userDetails = User.builder()
                 .username(usuario.getCorreo())
                 .password("")
-                .roles(usuario.getRol())
+                .roles(String.valueOf(usuario.getRol()))
                 .build();
 
             UsernamePasswordAuthenticationToken authentication =

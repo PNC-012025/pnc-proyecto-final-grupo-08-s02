@@ -8,11 +8,13 @@ import com.pnc.project.service.ActividadService;
 import com.pnc.project.utils.enums.RolNombre;
 import com.pnc.project.utils.enums.TipoActividad;
 import com.pnc.project.utils.mappers.ActividadMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ActividadServiceImpl implements ActividadService {
 
     private final ActividadRepository repo;
