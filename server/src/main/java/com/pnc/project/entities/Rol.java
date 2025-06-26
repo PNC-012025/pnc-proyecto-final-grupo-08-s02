@@ -1,5 +1,6 @@
 package com.pnc.project.entities;
 
+import com.pnc.project.utils.enums.RolNombre;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +20,7 @@ public class Rol {
     @Column(name = "id_rol")
     private Integer idRol;
 
-    @Column(name = "nombre_rol", nullable = false)
-    private String nombreRol;
+    @Enumerated(EnumType.STRING)                // <-- nuevo
+    @Column(nullable = false, unique = true)
+    private RolNombre nombre;                   // <-- enum en vez de String
 }
