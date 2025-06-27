@@ -1,5 +1,6 @@
 package com.pnc.project.entities;
 
+import com.pnc.project.utils.enums.EstadoValidacion;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,8 +25,10 @@ public class Validacion {
     @Column(name = "fecha_validacion")
     private LocalDate fechaValidacion;
 
-    @Column(name = "estado_validacion")
-    private Boolean estadoValidacion;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    @Builder.Default
+    private EstadoValidacion estado = EstadoValidacion.PENDIENTE;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")

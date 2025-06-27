@@ -1,5 +1,7 @@
 package com.pnc.project.entities;
 
+import com.pnc.project.utils.enums.ActividadNombre;
+import com.pnc.project.utils.enums.TipoActividad;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,9 +20,11 @@ public class Actividad {
     @Column(name = "id_actividad")
     private Integer idActividad;
 
-    @Column(name = "actividad_nombre")
-    private String actividadNombre;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, unique = true)
+    private ActividadNombre nombre;
 
-    @Column(name = "tipo_actividad")
-    private String tipoActividad;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TipoActividad tipoActividad;
 }

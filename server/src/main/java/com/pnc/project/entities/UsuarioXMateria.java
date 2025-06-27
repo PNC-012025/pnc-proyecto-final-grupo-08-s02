@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "usuario_x_materia")
+@Table(name = "usuario_x_materia",  uniqueConstraints = @UniqueConstraint(columnNames = {"id_usuario", "id_materia"}))
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
