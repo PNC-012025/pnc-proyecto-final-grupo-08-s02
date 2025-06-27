@@ -138,23 +138,18 @@ public class Registro_HoraServiceImpl implements Registro_HoraService {
             int idUsuario,
             String fechaInicio,
             String fechaFin) {
-
-        // 1. Convertir las cadenas a LocalDate
+        
         DateTimeFormatter fmt = DateTimeFormatter.ISO_DATE;  // yyyy-MM-dd
         LocalDate ini = LocalDate.parse(fechaInicio, fmt);
         LocalDate fin = LocalDate.parse(fechaFin, fmt);
 
-        // 2. Construir un Usuario "ligero" con sólo el id
-        //    (no hace falta consultar la tabla usuario)
         Usuario usuario = Usuario.builder()
                 .idUsuario(idUsuario)
                 .build();
 
-        // 3. Consultar la BD
         List<Registro_Hora> registros = registro_HoraRepository
                 .findByUsuarioAndFechaRegistroBetween(usuario, ini, fin);
 
-        // 4. Mapear a DTO y devolver
         return Registro_HoraMapper.toDTOList(registros);
     }
 
