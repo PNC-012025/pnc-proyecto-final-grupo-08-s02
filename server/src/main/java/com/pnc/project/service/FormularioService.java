@@ -18,16 +18,4 @@ public interface FormularioService {
     void delete(int id);
     //Actualizar formulario
     FormularioResponse update(FormularioRequest formulario);
-
-    //-------HACEN FALTA-------
-    //Obtener los formulario de la semana actual del usuario
-    //obtenerFormularioSemanaUsuario(id_usuario, semanaActual)
-
-    //Verificar si ya tiene formulario esta semana
-    //verificarSiYaTieneFormularioEstaSemana(id_usuario)
-
-    // Marcar como validado
-    //marcarComoValidado(id_formulario, id_encargado)
-
-
 }

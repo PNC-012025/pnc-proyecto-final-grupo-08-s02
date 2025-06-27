@@ -41,25 +41,4 @@ public class ActividadController {
         return ResponseEntity.ok(actividad);
     }
 
-    // Crear actividad
-    @PostMapping
-    public ResponseEntity<ActividadResponse> save(@RequestBody ActividadRequest actividadRequest) {
-        ActividadResponse actividad = actividadService.save(actividadRequest);
-        return ResponseEntity.ok(actividad);
-    }
-
-    // Actualizar actividad
-    @PutMapping("/{id}")
-    public ResponseEntity<ActividadResponse> update(@PathVariable int id, @RequestBody ActividadRequest actividadRequest) {
-        actividadRequest.setIdActividad(id); // Asegurarse de que el ID esté adecuado
-        ActividadResponse actividadActualizada = actividadService.update(actividadRequest);
-        return ResponseEntity.ok(actividadActualizada);
-    }
-
-    // Eliminar actividad por ID
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable int id) {
-        actividadService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
 }
