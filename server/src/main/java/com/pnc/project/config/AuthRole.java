@@ -82,8 +82,8 @@ public class AuthRole {
                         // Endpoints de registros (usuarios autenticados)
                         .requestMatchers(HttpMethod.GET, "/api/registros/**").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/registros/**").hasAnyRole("ENCARGADO", "INSTRUCTOR_NORMAL", "INSTRUCTOR_REMUNERADO")
-                        .requestMatchers(HttpMethod.PUT, "/api/registros/**").hasAnyRole("ENCARGADO", "INSTRUCTOR_NORMAL", "INSTRUCTOR_REMUNERADO")
-                        .requestMatchers(HttpMethod.DELETE, "/api/registros/**").hasRole("ENCARGADO") // Solo ENCARGADO puede eliminar
+                        .requestMatchers(HttpMethod.PUT, "/api/registros/**").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/api/registros/**").authenticated()
                         
                         .requestMatchers("/api/roles/**").hasRole("ENCARGADO")
                         .requestMatchers("/api/manage/horas/usuario/fecha").hasRole("ENCARGADO")
