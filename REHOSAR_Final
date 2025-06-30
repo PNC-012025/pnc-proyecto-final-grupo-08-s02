@@ -1,0 +1,1634 @@
+{
+	"info": {
+		"_postman_id": "00df2255-f6c7-4a81-afc0-81b17cc18b23",
+		"name": "REHOSAR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46211176",
+		"_collection_link": "https://pedro-2571529.postman.co/workspace/Pedro's-Workspace~e7f6770d-646c-403a-8e0c-c27e1fdcb6c5/collection/46211176-00df2255-f6c7-4a81-afc0-81b17cc18b23?action=share&source=collection_link&creator=46211176"
+	},
+	"item": [
+		{
+			"name": "Rol",
+			"item": [
+				{
+					"name": "ListRoles",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkyMDk4LCJleHAiOjE3NTA5OTU2OTh9.XW2VggPthBfq7bGb8abt2Q3i_K0lNuFKkBcP4HNmXPtnpU_c8PiaVj6XkWjPCIVL",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM1MTczLCJleHAiOjE3NTA2Mzg3NzN9.vxtqjh4a_AGMxn0AKx5Xa5jun5XUwpuciXi6rOKtb3STBTwt5RSGGR0lxrG35r3k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOne",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkyMDk4LCJleHAiOjE3NTA5OTU2OTh9.XW2VggPthBfq7bGb8abt2Q3i_K0lNuFKkBcP4HNmXPtnpU_c8PiaVj6XkWjPCIVL",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM1MTczLCJleHAiOjE3NTA2Mzg3NzN9.vxtqjh4a_AGMxn0AKx5Xa5jun5XUwpuciXi6rOKtb3STBTwt5RSGGR0lxrG35r3k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/roles/ENCARGADO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"roles",
+								"ENCARGADO"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"00156022@uca.edu.sv\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigoUsuario\":\"00230422\",\r\n    \"nombre\": \"Pedro\",\r\n    \"apellido\": \"Manzanares\",\r\n    \"correo\": \"00230422@uca.edu.sv\",\r\n    \"contrasena\": \"123456\",\r\n    \"rol\": \"INSTRUCTOR_NORMAL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListUsuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1MzI5LCJleHAiOjE3NTA5OTg5Mjl9.iZrqJvqFf1VLn_1s-NVeVgXbWBpMtFTBBIrEnFJNVoN9a3Ryj32uuyx8T4D22Vb_",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/usuarios/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"usuarios",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsuarioID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkwNjMyLCJleHAiOjE3NTA5OTQyMzJ9.r2LcfeJZqkdmQLRN77ii9dhgp00U9cUwUWjlwzNnA1bBXEznvT7eH_gvMLsT2mW8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/usuarios/data/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"usuarios",
+								"data",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsuarioCodigo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk4MzM5LCJleHAiOjE3NTEwMDE5Mzl9.fRQ5c5eZMwhsH-fuAY40Ve6pQMNjv4OjzjODfw2wERJSc2iMsuXwvbqzIPkKYblp",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/usuarios/codigo/00156024",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"usuarios",
+								"codigo",
+								"00156024"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMateriasId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkwNjMyLCJleHAiOjE3NTA5OTQyMzJ9.r2LcfeJZqkdmQLRN77ii9dhgp00U9cUwUWjlwzNnA1bBXEznvT7eH_gvMLsT2mW8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM1MTczLCJleHAiOjE3NTA2Mzg3NzN9.vxtqjh4a_AGMxn0AKx5Xa5jun5XUwpuciXi6rOKtb3STBTwt5RSGGR0lxrG35r3k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/usuarios/materia?idMateria=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"usuarios",
+								"materia"
+							],
+							"query": [
+								{
+									"key": "idMateria",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetRolsId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkyMDk4LCJleHAiOjE3NTA5OTU2OTh9.XW2VggPthBfq7bGb8abt2Q3i_K0lNuFKkBcP4HNmXPtnpU_c8PiaVj6XkWjPCIVL",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/usuarios/rol?idRol=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"usuarios",
+								"rol"
+							],
+							"query": [
+								{
+									"key": "idRol",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1MzI5LCJleHAiOjE3NTA5OTg5Mjl9.iZrqJvqFf1VLn_1s-NVeVgXbWBpMtFTBBIrEnFJNVoN9a3Ryj32uuyx8T4D22Vb_",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigoUsuario\":\"00230423\",\r\n    \"nombre\": \"Pedro\",\r\n    \"apellido\": \"Manzanares\",\r\n    \"correo\": \"00230423@uca.edu.sv\",\r\n    \"contrasena\": \"123456\",\r\n    \"rol\": \"INSTRUCTOR_NORMAL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/usuarios/update/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"usuarios",
+								"update",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkyMDk4LCJleHAiOjE3NTA5OTU2OTh9.XW2VggPthBfq7bGb8abt2Q3i_K0lNuFKkBcP4HNmXPtnpU_c8PiaVj6XkWjPCIVL",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/usuarios/delete/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"usuarios",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Formulario",
+			"item": [
+				{
+					"name": "AddFormulario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkyMDk4LCJleHAiOjE3NTA5OTU2OTh9.XW2VggPthBfq7bGb8abt2Q3i_K0lNuFKkBcP4HNmXPtnpU_c8PiaVj6XkWjPCIVL",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaCreacion\": \"2025-06-23\",\r\n    \"estado\": \"PENDIENTE\",\r\n    \"codigoUsuario\": \"00156022\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/formularios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"formularios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetFormularioID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1NTgzLCJleHAiOjE3NTA5OTkxODN9.jd3ZOEMfla8TJV8i3CVCe3JYYnSmzaM_NFz16eBRkyqgvB1okK14osOZDfyRzpGB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaCreacion\": \"2025-06-22\",\r\n    \"estado\": \"Pendiente\",\r\n    \"codigoUsuario\": \"00083522\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/formularios/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"formularios",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GerFormularioUsuario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkyMDk4LCJleHAiOjE3NTA5OTU2OTh9.XW2VggPthBfq7bGb8abt2Q3i_K0lNuFKkBcP4HNmXPtnpU_c8PiaVj6XkWjPCIVL",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaCreacion\": \"2025-06-22\",\r\n    \"estado\": \"Pendiente\",\r\n    \"codigoUsuario\": \"00083522\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/formularios/usuario/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"formularios",
+								"usuario",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkyMDk4LCJleHAiOjE3NTA5OTU2OTh9.XW2VggPthBfq7bGb8abt2Q3i_K0lNuFKkBcP4HNmXPtnpU_c8PiaVj6XkWjPCIVL",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/formularios/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"formularios",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1NTgzLCJleHAiOjE3NTA5OTkxODN9.jd3ZOEMfla8TJV8i3CVCe3JYYnSmzaM_NFz16eBRkyqgvB1okK14osOZDfyRzpGB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaCreacion\": \"2025-06-23\",\r\n    \"estado\": \"PENDIENTE\",\r\n    \"codigoUsuario\": \"00230423\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/formularios/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"formularios",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Actividad",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1NTgzLCJleHAiOjE3NTA5OTkxODN9.jd3ZOEMfla8TJV8i3CVCe3JYYnSmzaM_NFz16eBRkyqgvB1okK14osOZDfyRzpGB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreActividad\": \"camaron\",\r\n    \"rolInstructor\": \"INSTRUCTOR_REMUNERADO\",\r\n    \"tipoActividad\": \"REMUNERADA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/actividades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"actividades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListActividades",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1NTgzLCJleHAiOjE3NTA5OTkxODN9.jd3ZOEMfla8TJV8i3CVCe3JYYnSmzaM_NFz16eBRkyqgvB1okK14osOZDfyRzpGB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreActividad\": \"Cuidar Laboratorio\",\r\n    \"tipoActividad\": \"Remunerada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/actividades",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"actividades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListTipoActividad",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1NTgzLCJleHAiOjE3NTA5OTkxODN9.jd3ZOEMfla8TJV8i3CVCe3JYYnSmzaM_NFz16eBRkyqgvB1okK14osOZDfyRzpGB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/actividades/tipo/SOCIAL",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"actividades",
+								"tipo",
+								"SOCIAL"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1NTgzLCJleHAiOjE3NTA5OTkxODN9.jd3ZOEMfla8TJV8i3CVCe3JYYnSmzaM_NFz16eBRkyqgvB1okK14osOZDfyRzpGB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/actividades/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"actividades",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateId",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/actividades/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"actividades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Materia",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkwNjMyLCJleHAiOjE3NTA5OTQyMzJ9.r2LcfeJZqkdmQLRN77ii9dhgp00U9cUwUWjlwzNnA1bBXEznvT7eH_gvMLsT2mW8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreMateria\":\"BI\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/materias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"materias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListMaterias",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkwNjMyLCJleHAiOjE3NTA5OTQyMzJ9.r2LcfeJZqkdmQLRN77ii9dhgp00U9cUwUWjlwzNnA1bBXEznvT7eH_gvMLsT2mW8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM1MTczLCJleHAiOjE3NTA2Mzg3NzN9.vxtqjh4a_AGMxn0AKx5Xa5jun5XUwpuciXi6rOKtb3STBTwt5RSGGR0lxrG35r3k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/materias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"materias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkwNjMyLCJleHAiOjE3NTA5OTQyMzJ9.r2LcfeJZqkdmQLRN77ii9dhgp00U9cUwUWjlwzNnA1bBXEznvT7eH_gvMLsT2mW8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM1MTczLCJleHAiOjE3NTA2Mzg3NzN9.vxtqjh4a_AGMxn0AKx5Xa5jun5XUwpuciXi6rOKtb3STBTwt5RSGGR0lxrG35r3k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreMateria\":\"Calculo III\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/materias/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"materias",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkwNjMyLCJleHAiOjE3NTA5OTQyMzJ9.r2LcfeJZqkdmQLRN77ii9dhgp00U9cUwUWjlwzNnA1bBXEznvT7eH_gvMLsT2mW8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/materias/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"materias",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Validacion",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTY2MzcwLCJleHAiOjE3NTA5Njk5NzB9.f_-KZdaYG0QajoV2Yhq3AQ-_VlpomNIDbVi-kKmMSPJCdjPBpjFU8R3KaRwTxXi-",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fechaValidacion\": \"2025-06-22\",\r\n  \"estado\": \"PENDIENTE\",\r\n  \"codigoUsuario\": \"00156024\",\r\n  \"idFormulario\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/validaciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"validaciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Formularios pendientes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTY1NDgxLCJleHAiOjE3NTA5NjkwODF9.4YDtf4y_QjkepGpZ3FDiG2Eu6vlUoHOhORuMyAVInzUoLubcU2ymI_HgNA1Mais0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/validaciones/formularios-pendientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"validaciones",
+								"formularios-pendientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1NTgzLCJleHAiOjE3NTA5OTkxODN9.jd3ZOEMfla8TJV8i3CVCe3JYYnSmzaM_NFz16eBRkyqgvB1okK14osOZDfyRzpGB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/validaciones/encargado/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"validaciones",
+								"encargado",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Decline",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1NTgzLCJleHAiOjE3NTA5OTkxODN9.jd3ZOEMfla8TJV8i3CVCe3JYYnSmzaM_NFz16eBRkyqgvB1okK14osOZDfyRzpGB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/validaciones/rechazar?idFormulario=1&observacion=me%20vale%20verga\n",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"validaciones",
+								"rechazar"
+							],
+							"query": [
+								{
+									"key": "idFormulario",
+									"value": "1"
+								},
+								{
+									"key": "observacion",
+									"value": "me%20vale%20verga\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1NTgzLCJleHAiOjE3NTA5OTkxODN9.jd3ZOEMfla8TJV8i3CVCe3JYYnSmzaM_NFz16eBRkyqgvB1okK14osOZDfyRzpGB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idValidacion\": 1,\r\n  \"fechaValidacion\": \"2025-06-22\",\r\n  \"estado\": \"APROBADA\",\r\n  \"codigoUsuario\": \"00156024\",\r\n  \"idFormulario\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/validaciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"validaciones"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UsuarioXMateria",
+			"item": [
+				{
+					"name": "AddRelacion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkwNjMyLCJleHAiOjE3NTA5OTQyMzJ9.r2LcfeJZqkdmQLRN77ii9dhgp00U9cUwUWjlwzNnA1bBXEznvT7eH_gvMLsT2mW8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM1MTczLCJleHAiOjE3NTA2Mzg3NzN9.vxtqjh4a_AGMxn0AKx5Xa5jun5XUwpuciXi6rOKtb3STBTwt5RSGGR0lxrG35r3k",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigoUsuario\": \"00156024\",\r\n    \"nombreMateria\": \"N-CAPAS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/usuario-materias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"usuario-materias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkwNjMyLCJleHAiOjE3NTA5OTQyMzJ9.r2LcfeJZqkdmQLRN77ii9dhgp00U9cUwUWjlwzNnA1bBXEznvT7eH_gvMLsT2mW8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM1MTczLCJleHAiOjE3NTA2Mzg3NzN9.vxtqjh4a_AGMxn0AKx5Xa5jun5XUwpuciXi6rOKtb3STBTwt5RSGGR0lxrG35r3k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/usuario-materias/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"usuario-materias",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMateria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkxNjY2LCJleHAiOjE3NTA5OTUyNjZ9.pbcfgIG5ELUw4ux6a5RLNBiDmvSIRQ2b5ObWL5nty8H98SKNAG6KSfRJO9LLd4zX",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/usuario-materias/usuario/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"usuario-materias",
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTkyMDk4LCJleHAiOjE3NTA5OTU2OTh9.XW2VggPthBfq7bGb8abt2Q3i_K0lNuFKkBcP4HNmXPtnpU_c8PiaVj6XkWjPCIVL",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/usuario-materias/materia/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"usuario-materias",
+								"materia",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Registro_Hora",
+			"item": [
+				{
+					"name": "Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk1NTgzLCJleHAiOjE3NTA5OTkxODN9.jd3ZOEMfla8TJV8i3CVCe3JYYnSmzaM_NFz16eBRkyqgvB1okK14osOZDfyRzpGB",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaRegistro\": \"2025-06-22\",\r\n    \"horaInicio\":\"12:30:00\",\r\n    \"horaFin\": \"01:00:00\",\r\n    \"horasEfectivas\": 1,\r\n    \"aula\":\"L-3\",\r\n    \"codigoUsuario\": \"00230423\",\r\n    \"idFormulario\": 1,\r\n    \"idActividad\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/registros/horas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"registros",
+								"horas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk3NzQ4LCJleHAiOjE3NTEwMDEzNDh9.pZrvlPYmOxLu0W_7vJkZZE68wEtxq6gSXxRFao4wX--L_TINdDhBY2R9LmnKP8xX",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/registros/horas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"registros",
+								"horas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk3NzQ4LCJleHAiOjE3NTEwMDEzNDh9.pZrvlPYmOxLu0W_7vJkZZE68wEtxq6gSXxRFao4wX--L_TINdDhBY2R9LmnKP8xX",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaRegistro\": \"2025-06-22\",\r\n    \"horaInicio\":\"12:30:00\",\r\n    \"horaFin\": \"01:00:00\",\r\n    \"horasEfectivas\": 1,\r\n    \"aula\":\"L-3\",\r\n    \"codigoUsuario\": \"00083522\",\r\n    \"idFormulario\": 1,\r\n    \"idActividad\":1\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/registros/horas/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"registros",
+								"horas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk3NzQ4LCJleHAiOjE3NTEwMDEzNDh9.pZrvlPYmOxLu0W_7vJkZZE68wEtxq6gSXxRFao4wX--L_TINdDhBY2R9LmnKP8xX",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaRegistro\": \"2025-06-22\",\r\n    \"horaInicio\":\"12:30:00\",\r\n    \"horaFin\": \"01:00:00\",\r\n    \"horasEfectivas\": 3,\r\n    \"aula\":\"L-3\",\r\n    \"codigoUsuario\": \"00156024\",\r\n    \"idFormulario\": 1,\r\n    \"idActividad\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/registros/horas/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"registros",
+								"horas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUwOTk3NzQ4LCJleHAiOjE3NTEwMDEzNDh9.pZrvlPYmOxLu0W_7vJkZZE68wEtxq6gSXxRFao4wX--L_TINdDhBY2R9LmnKP8xX",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaRegistro\": \"2025-06-22\",\r\n    \"horaInicio\":\"12:30:00\",\r\n    \"horaFin\": \"01:00:00\",\r\n    \"horasEfectivas\": 1,\r\n    \"aula\":\"L-3\",\r\n    \"codigoUsuario\": \"00083522\",\r\n    \"idFormulario\": 1,\r\n    \"idActividad\":1\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/registros/horas/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"registros",
+								"horas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetDate&Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MSwiaWF0IjoxNzUxMDAwNjI2LCJleHAiOjE3NTEwMDQyMjZ9.djcZy6nQj1uNDQZiF-n245pk1zHuNOSAEp3r0Xbx_4IZWQtUXOf0Hcig6tNeKiah",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJpZCI6MywiaWF0IjoxNzUwNjM5ODUwLCJleHAiOjE3NTA2NDM0NTB9.6OkOCfLcEp-gkZ-sMvTwSswnqRpTlFgI09X92zQyzS_F9Ev8eeV6gjjEzJE5s95q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4000/api/registros/manage/horas/usuario/fecha?idUsuario=4&fechaInicio=2025-06-22&fechaFin=2025-06-22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"registros",
+								"manage",
+								"horas",
+								"usuario",
+								"fecha"
+							],
+							"query": [
+								{
+									"key": "idUsuario",
+									"value": "4"
+								},
+								{
+									"key": "fechaInicio",
+									"value": "2025-06-22"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2025-06-22"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
